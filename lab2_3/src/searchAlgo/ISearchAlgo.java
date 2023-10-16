@@ -9,4 +9,6 @@ public interface ISearchAlgo {
 	
 	public Node executeTree(Node root, String start, String goal);
 	
+	public Node execute(Node root, String goal, int limitedDepth);
+	
 }

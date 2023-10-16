@@ -9,12 +9,12 @@ public class DepthFirstSearchAlgo implements ISearchAlgo {
 
 	@Override
 	public Node execute(Node root, String goal) {
-		Stack<Node> stack = new Stack<Node>();
-		stack.add(root);
-		List<Node> expand = new ArrayList<Node>();
-		while (!stack.isEmpty()) {
-			Node current = stack.pop();
-			expand.add(current);
+		Stack<Node> frontier = new Stack<Node>();
+		frontier.add(root);
+		List<Node> explored = new ArrayList<Node>();
+		while (frontier.isEmpty()) {
+			Node current = frontier.pop();
+			explored.add(current);
 			if (current.getLabel().contains(goal)) {
 				return current;
 			} else {
@@ -25,9 +25,8 @@ public class DepthFirstSearchAlgo implements ISearchAlgo {
 					if (edge.getEnd().getParent() == null) {
 						edge.getEnd().setParent(current);
 					}
-					if (!stack.contains(edge.getEnd()) && !expand.contains(edge.getEnd()))
-						;
-					stack.push(edge.getEnd());
+					if (!frontier.contains(edge.getEnd()) && !explored.contains(edge.getEnd()));
+					frontier.push(edge.getEnd());
 				}
 			}
 		}
@@ -109,6 +108,12 @@ public class DepthFirstSearchAlgo implements ISearchAlgo {
 				}
 			}
 		}
+		return null;
+	}
+
+	@Override
+	public Node execute(Node root, String goal, int limitedDepth) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }
