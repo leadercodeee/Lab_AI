@@ -8,10 +8,11 @@ public class NodeComparator implements Comparator<Node> {
 		if (o1.getPathCost() < o2.getPathCost()) {
 			return -1;
 		} else {
-			if (o1.getPathCost() == o2.getPathCost()) {
+			if (o1.getPathCost() > o2.getPathCost()) {
+				return 1;
+			} else {
 				return 0;
 			}
-			return 1;
 		}
 	}
 }

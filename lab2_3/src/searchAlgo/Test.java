@@ -70,6 +70,7 @@ public class Test {
 		ISearchAlgo algo10 = new UniformCostSearchAlgo();
 		Node result10 = algo10.execute(nodeS, "S", "G");
 		System.out.println(NodeUtils.printPath(result10));
+		System.out.println("Path cost: " + result10.getPathCost());
 		System.out.println("------------------------------");
 
 	}

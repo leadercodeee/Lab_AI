@@ -26,6 +26,10 @@ public class TestAStar {
 //		Node res = aStar.execute(s, g.getLabel());
 //		System.out.println(NodeUtils.printPath(res));
 		
+		IInformedSearchAlgo bfs = new GreedyBestFirstSearchAlgo();
+		Node res = bfs.execute(s, g.getLabel());
+		System.out.println(NodeUtils.printPath(res));
+		
 		
 	}
 }
