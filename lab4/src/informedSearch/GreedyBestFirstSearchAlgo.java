@@ -48,18 +48,18 @@ public class GreedyBestFirstSearchAlgo implements IInformedSearchAlgo {
 		List<Node> explored = new ArrayList<Node>();
 		while (!frontier.isEmpty()) {
 			Node current = frontier.poll();
-			frontier.add(current);
-			if (current.getLabel().contains(goal)) {
+			frontier.add(current); // model.get...
+			if (current.getLabel().contains(goal)) { // getH1 ==0
 				return current;
 			} else {
-				List<Edge> children = current.getChildren();
+				List<Edge> children = current.getChildren(); // Sucess...
 				for (Edge edge : children) {
 					Node end = edge.getEnd();
 					if (edge.getEnd().getLabel() == start) {
 						end.setParent(current);
 						if (!frontier.contains(end) && (!explored.contains(end))) {
 							frontier.add(end);
-							end.setG(current.getG() + edge.getWeight());
+							end.setG(current.getG() + edge.getWeight());//+1
 						} else if (frontier.contains(end)) {
 							double pathCost = end.getH();
 							double newPathCost = current.getG() + edge.getWeight();
@@ -77,10 +77,5 @@ public class GreedyBestFirstSearchAlgo implements IInformedSearchAlgo {
 		}
 		return null;
 	}
-
-	@Override
-	public boolean isAdmissibleH(Node root, String goal) {
-		return false;
-	}
-
+	
 }

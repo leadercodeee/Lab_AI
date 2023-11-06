@@ -30,13 +30,17 @@ public class TestAStar {
 //		Node res1 = bfs.execute(s, g.getLabel());
 //		System.out.println(NodeUtils.printPath(res1));
 
-		IInformedSearchAlgo bfsg = new GreedyBestFirstSearchAlgo();
-		Node res2 = bfsg.execute(s, g.getLabel(), f.getLabel());
-		System.out.println(NodeUtils.printPath(res2));
+//		IInformedSearchAlgo bfsg = new GreedyBestFirstSearchAlgo();
+//		Node res2 = bfsg.execute(s, g.getLabel(), f.getLabel());
+//		System.out.println(NodeUtils.printPath(res2));
+//
+//		IInformedSearchAlgo aStar = new AStarSearchAlgo();
+//		Node res3 = aStar.execute(s, g.getLabel(),f.getLabel());
+//		System.out.println(NodeUtils.printPath(res3));
+//		
 
-		IInformedSearchAlgo aStar = new AStarSearchAlgo();
-		Node res3 = aStar.execute(s, g.getLabel(),f.getLabel());
-		System.out.println(NodeUtils.printPath(res3));
+		AStarSearchAlgo aStar2 = new AStarSearchAlgo();
+		System.out.println(aStar2.isAdmissibleH(s, g.getLabel()));
 
 	}
 }

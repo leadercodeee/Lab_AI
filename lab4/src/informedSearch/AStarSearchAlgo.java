@@ -31,7 +31,7 @@ public class AStarSearchAlgo implements IInformedSearchAlgo {
 							end.setH(newPathCost);
 							end.setParent(current);
 						}
-						if(frontier.contains(edge)) {
+						if (frontier.contains(edge)) {
 							frontier.remove(edge);
 						}
 						frontier.add(current);
@@ -43,6 +43,7 @@ public class AStarSearchAlgo implements IInformedSearchAlgo {
 		}
 		return null;
 	}
+
 	@Override
 	public Node execute(Node root, String start, String goal) {
 		PriorityQueue<Node> frontier = new PriorityQueue<Node>(new NodeComparableByGnHn());
@@ -57,8 +58,8 @@ public class AStarSearchAlgo implements IInformedSearchAlgo {
 				List<Edge> children = current.getChildren();
 				for (Edge edge : children) {
 					Node end = edge.getEnd();
-					if(edge.getBegin().getLabel()==start)
-					end.setParent(current);
+					if (edge.getBegin().getLabel() == start)
+						end.setParent(current);
 					if (!frontier.contains(end) && (!explored.contains(end))) {
 						frontier.add(end);
 						end.setH(current.getH() + edge.getWeight());
@@ -69,7 +70,7 @@ public class AStarSearchAlgo implements IInformedSearchAlgo {
 							end.setH(newPathCost);
 							end.setParent(current);
 						}
-						if(frontier.contains(edge)) {
+						if (frontier.contains(edge)) {
 							frontier.remove(edge);
 						}
 						frontier.add(current);
@@ -81,14 +82,12 @@ public class AStarSearchAlgo implements IInformedSearchAlgo {
 		}
 		return null;
 	}
-	@Override
+
 	public boolean isAdmissibleH(Node root, String goal) {
-		// TODO Auto-generated method stub
-		return false;
+		double h = root.getH();
+		double hStar = execute(root, goal).getG();
+		System.out.println("h:" + h + " " + "h*:" + hStar);
+		return h <= hStar;
 	}
-
-
-
-	
 
 }
